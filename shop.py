@@ -17,14 +17,39 @@ class Shop:
             
                 
             elif number == "2":
-                product_num = int(input("상품 번호: "))
-                qty = int(input("수량: "))
+                product_num = input("상품 번호: ")
+                
+                if not product_num.isdigit():
+                    print("상품 번호는 숫자로 입력해주세요.")
+                    continue
+
+                product_num = int(product_num)
+
+                qty = input("수량: ")
+
+                if not qty.isdigit():
+                    print("수량은 숫자로 입력해주세요.")
+                    continue
+
+                qty = int(qty)
                 
                 self._add_basket(product_num, qty)
 
             elif number == "3":
-                product_num = int(input("장바구니에서 뺄 상품을 입력해주세요. : "))
-                qty = int(input("뺄 수량: "))
+                product_num = input("장바구니에서 뺄 상품을 입력해주세요. : ")
+                qty = input("뺄 수량: ")
+
+                if not product_num.isdigit():
+                    print("뺄 상품을 숫자로 입력해주세요.")
+                    continue
+
+                product_num = int(product_num)
+
+                if not qty.isdigit():
+                    print("숫자를 입력해주세요.")
+                    continue
+
+                qty = int(qty)
 
                 self._take_out_basket(product_num, qty)
                 
@@ -82,7 +107,7 @@ class Shop:
 
         # 재고 복구
         for stock_item in stocks:
-            if stock_item.name == my_items.name:
+            if stock_item.name == basket_item.name:
                 stock_item.inventory += qty
                 break
 
@@ -98,6 +123,7 @@ class Shop:
 
     # 장바구니 담기
     def _add_basket(self, product_num, qty):
+
         if product_num < 1 or product_num > len(stocks):
             print("잘못된 상품 번호입니다.")
             return
@@ -115,7 +141,7 @@ class Shop:
         if qty <= 0:
             print("1개 이상의 수량을 입력해주세요.")
             return
-
+        
         item.inventory -= qty
 
         for basket_item in my_items:
