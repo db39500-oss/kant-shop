@@ -67,7 +67,7 @@ class Shop:
                 print("1 ~ 6 사이 값만 입력해주세요. 종료 원할 시 q 입력")
                 
 
-    # 상품 목록d
+    # 상품 목록
     def __init__(self, name, price, inventory):
         self.name = name
         self.price = int(price)
