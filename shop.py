@@ -154,6 +154,14 @@ class Shop:
         print(f"{item.name} {qty}개를 담았습니다.")
 
 
+        price = my_items[product_num - 1]
+
+        for i in my_items:
+            #합계 = 가격 * 수량 
+            total =  {}
+
+
+
 # 상품 목록 리스트 만들기
 shop1 = Shop("무선 이어폰", 89000, 3)
 shop2 = Shop("텀블러", 15000, 10)
